@@ -1,93 +1,62 @@
-# EX01 Developing a Simple Webserver
-## Date:
-
+# Ex01 Developing a Simple Webserver
 ## AIM:
 To develop a simple webserver to serve html pages.
 
 ## DESIGN STEPS:
 ### Step 1: 
-HTML content creation.
+HTML content creation
 
 ### Step 2:
-Design of webserver workflow.
+Design of webserver workflow
 
 ### Step 3:
-Implementation using Python code.
+Implementation using Python code
 
 ### Step 4:
 Serving the HTML pages.
 
 ### Step 5:
-Testing the webserver.
+Testing the webserver
+
 
 ## PROGRAM:
-from http.server import HTTPServer,BaseHTTPRequestHandler
-
-content='''
-<!doctype html>
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
+<!DOCTYPE html>
 <html>
 <head>
-<title> My Web Server</title>
+<title>My webserver</title>
 </head>
 <body>
-<h1>Top Five Revenue from Companies</h1>
-<table border=2>
-<tr>
-<th> Company Name</th>
-<th> Revenue</th>
-<th> Financial Year</th>
-</tr>
-
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-<tr>
-<td> Micro Soft</td>
-<td> $86.6</td>
-<td> 2014</td>
-</tr>
-</table>
+<h1><u>Languages used iun Web Development</u><h1>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>Bootstrap</li>
 </body>
 </html>
-'''
-
-class MyServer(BaseHTTPRequestHandler):
+"""
+class myhandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("Get request received...")
-        self.send_response(200) 
-        self.send_header("content-type", "text/html")       
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
         self.end_headers()
         self.wfile.write(content.encode())
-
-print("This is my webserver") 
-server_address =('',8000)
-httpd = HTTPServer(server_address,MyServer)
+server_address = ('',80)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
 httpd.serve_forever()
+```
+
 
 ## OUTPUT:
-![alt text](image.png)
+![output](./out1.png)
+![output](./out2.png)
+
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
+
